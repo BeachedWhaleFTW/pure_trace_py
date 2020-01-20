@@ -45,9 +45,28 @@ class TestVect():
         vec2 = create_vector(self.component_dict[1])
         answer = [4, 4, 7]
 
-        print_test("v1 and v2", "add", answer, (vec1 + vec2).components)
+        print_test("v1 plus v2", "add", answer, (vec1 + vec2).components)
 
         return True
+
+    def test_subtract(self):
+        vec1 = create_vector(self.component_dict[0])
+        vec2 = create_vector(self.component_dict[1])
+        answer1 = [-2, -8, -11]
+        answer2 = [2, 8, 11]
+
+        print_test("v1 minus v2", "Subtract", answer1, (vec1 - vec2).components)
+        print_test("v2 minus v1", "Subtract", answer2, (vec2 - vec1).components)
+
+    def test_multiply(self):
+        vec1 = create_vector(self.component_dict[0])
+        scalar1 = 2
+        scalar2 = -4
+        answer1 = [2, -4, -4]
+        answer2 = [-4, 8, 8]
+
+        print_test("v1 times 2", "Multiply", answer1, (vec1 * scalar1).components)
+        print_test("v2 times -4", "Multiply", answer2, (vec1 * scalar2).components)
     
 
 if __name__ == '__main__':
@@ -67,4 +86,5 @@ if __name__ == '__main__':
     test.test_dot_product()
     test.test_normalize()
     test.test_add()
-    
+    test.test_subtract()
+    test.test_multiply()

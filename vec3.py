@@ -36,3 +36,16 @@ Components to be passed as an array [c1, c2, c3, ..., cn] of numerics."""
 
         return Vect(out_components)
     
+    def __sub__(self, vec2):
+        out_components = []
+        for i, c1 in enumerate(self.components):
+            out_components.append(c1 - vec2.components[i])
+
+        return Vect(out_components)
+
+    def __mul__(self, scalar):
+        out_components = []
+        for c in self.components:
+            out_components.append(c * scalar)
+
+        return Vect(out_components)
