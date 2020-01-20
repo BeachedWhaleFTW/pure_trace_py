@@ -49,3 +49,10 @@ Components to be passed as an array [c1, c2, c3, ..., cn] of numerics."""
             out_components.append(c * scalar)
 
         return Vect(out_components)
+
+    def __truediv__(self, divisor):
+        out_components = []
+        for c in self.components:
+            out_components.append(c / divisor)
+
+        return Vect(out_components)

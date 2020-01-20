@@ -17,14 +17,14 @@ class TestVect():
         self.component_dict = component_dict
 
     def test_magnitude(self):
-        for k, v in self.component_dict.iteritems():
+        for k, v in self.component_dict.items():
             vec = create_vector(v)
             print_test(v['description'], 'Magnitude', v['magnitude'], vec.magnitude())
             
         return True
 
     def test_normalize(self):
-        for k, v in self.component_dict.iteritems():
+        for k, v in self.component_dict.items():
             vec = create_vector(v)
             print_test(v['description'], 'Normalize', vec3.Vect(v['normal']).components, vec.normalize().components)
 
@@ -58,6 +58,8 @@ class TestVect():
         print_test("v1 minus v2", "Subtract", answer1, (vec1 - vec2).components)
         print_test("v2 minus v1", "Subtract", answer2, (vec2 - vec1).components)
 
+        return True
+
     def test_multiply(self):
         vec1 = create_vector(self.component_dict[0])
         scalar1 = 2
@@ -67,18 +69,29 @@ class TestVect():
 
         print_test("v1 times 2", "Multiply", answer1, (vec1 * scalar1).components)
         print_test("v2 times -4", "Multiply", answer2, (vec1 * scalar2).components)
+
+        return True
+
+    def test_division(self):
+        vec1 = create_vector(self.component_dict[0])
+        divisor = -2
+        answer = [1 / -2, -2 / -2, -2 / -2]
+
+        print_test("v1 divided by -2", "Division", answer, (vec1 / divisor).components)
+
+        return True
     
 
 if __name__ == '__main__':
     test_data = {0: {'description': 'basic 3d vector with negative elements',
                      'components': [1, -2, -2],
                      'magnitude': 3,
-                     'normal': [1/3., -2/3., -2/3.]
+                     'normal': [1/3, -2/3, -2/3]
                      },
                  1: {'description': 'basic 3d vector',
                      'components': [3, 6, 9],
-                     'magnitude': math.sqrt(81+45),
-                     'normal': [3 / math.sqrt(81+45), 6 / math.sqrt(81+45), 9 / math.sqrt(81+45)]
+                     'magnitude': math.sqrt(126),
+                     'normal': [3 / math.sqrt(126), 6 / math.sqrt(126), 9 / math.sqrt(126)]
                      }
                  }
     test = TestVect(test_data)
@@ -88,3 +101,4 @@ if __name__ == '__main__':
     test.test_add()
     test.test_subtract()
     test.test_multiply()
+    test.test_division()
