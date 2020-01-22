@@ -1,16 +1,14 @@
 import math
 
-class Vect():
-    """implements a vector of n size where n is the len(components).
-Components to be passed as an array [c1, c2, c3, ..., cn] of numerics."""
-    def __init__(self, components):
-        self.components = components
-        self.size = len(components)
+class Vec3():
+    """implements a vector of size 3. Components to be passed as floats."""
+    def __init__(self, x, y, z):
+        self.x = x
+        self.y = y
+        self.z = z
 
     def magnitude(self):
-        radicand = 0
-        for c in self.components:
-            radicand += (c ** 2)
+        radicand = (self.x ** 2) + (self.y ** 2) + (self.z ** 2)
 
         return math.sqrt(radicand)
 
