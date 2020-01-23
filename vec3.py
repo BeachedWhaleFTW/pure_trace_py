@@ -1,11 +1,13 @@
 import math
 
-class Vec3():
+
+class Vec3:
     """implements a vector of size 3. Components to be passed as floats."""
-    def __init__(self, x, y, z):
-        self.x = x
-        self.y = y
-        self.z = z
+
+    def __init__(self, x=0.0, y=0.0, z=0.0):
+        self.x = float(x)
+        self.y = float(y)
+        self.z = float(z)
 
     def magnitude(self):
         return math.sqrt(self.dot_product(self))
@@ -13,18 +15,16 @@ class Vec3():
     def normalize(self):
         mag = self.magnitude()
 
-        return Vec3(self.x/mag, self.y/mag, self.z/mag)
+        return Vec3(self.x / mag, self.y / mag, self.z / mag)
 
-    def dot_product(self, vec2):
-        dp = (self.x * vec2.x) + (self.y * vec2.y) + (self.z * vec2.z)
+    def dot_product(self, other):
+        return (self.x * other.x) + (self.y * other.y) + (self.z * other.z)
 
-        return dp
+    def __add__(self, other):
+        return Vec3(self.x + other.x, self.y + other.y, self.z + other.z)
 
-    def __add__(self, vec2):
-        return Vec3(self.x + vec2.x, self.y + vec2.y, self.z + vec2.z)
-    
-    def __sub__(self, vec2):
-        return Vec3(self.x - vec2.x, self.y - vec2.y, self.z - vec2.z)
+    def __sub__(self, other):
+        return Vec3(self.x - other.x, self.y - other.y, self.z - other.z)
 
     def __mul__(self, scalar):
         return Vec3(self.x * scalar, self.y * scalar, self.z * scalar)
