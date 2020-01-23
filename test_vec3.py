@@ -27,7 +27,9 @@ class TestVec3(unittest.TestCase):
 
     def test_mul(self):
         prod_v1_2 = self.v1 * -2
+        prod_2_v1 = -2 * self.v1
         self.assertEqual(getattr(prod_v1_2, "x"), -2.)
+        self.assertEqual(getattr(prod_2_v1, "x"), -2.)
 
     def test_div(self):
         quot_v1_1 = self.v1 / -1
