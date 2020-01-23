@@ -29,5 +29,8 @@ class Vec3:
     def __mul__(self, scalar):
         return Vec3(self.x * scalar, self.y * scalar, self.z * scalar)
 
+    def __rmul__(self, scalar):
+        return self.__mul__(scalar)
+
     def __truediv__(self, divisor):
         return Vec3(self.x / divisor, self.y / divisor, self.z / divisor)
