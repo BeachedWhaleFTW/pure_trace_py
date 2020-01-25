@@ -8,7 +8,9 @@ class TestImage(unittest.TestCase):
             self.img_data = f.read()
 
         args0 = {"size": (3, 2),
-                 "max_color_val": 255
+                 "max_color_val": 255,
+                 "color_data": [[(255, 0, 0), (0, 255, 0), (0, 0, 255)],
+                                [(255, 255, 0), (255, 255, 255), (0, 0, 0)]]
                  }
         self.img0 = Image(args0)
 
