@@ -1,31 +1,22 @@
-from image import Image
 from color import Color
 from point import Point
+from vec3 import Vec3
 from sphere import Sphere
+from scene import Scene
+from engine import RenderEngine
 
-WIDTH = 2560
-HEIGHT = 1600
-CAMERA = Point(0, 0, -1)
-BLACK = Point(0, 0, 0)
-RED = Color(1, 0, 0)
-
-
-def create_background(img, color):
-    for i in range(img.width):
-        for j in range(img.height):
-            img.set_pixel(i, j, color)
-
-    return 1
+WIDTH = 320
+HEIGHT = 200
 
 
 def main():
-    img = Image(WIDTH, HEIGHT)
-    create_background(img, BLACK)
+    camera = Vec3(0, 0, -1)
+    objects = [Sphere(Point(0, 0, 0), 0.5, Color.from_hex("#FF0000"))]
+    scene = Scene(camera, objects, WIDTH, HEIGHT)
+    engine = RenderEngine()
+    img = engine.render(scene)
 
-    sphere = Sphere(Point(0, 0, 0), 0.5, RED)
-
-
-    with open("rad_gradient_test.ppm", 'w') as img_file:
+    with open("sphere_test.ppm", 'w') as img_file:
         img.write_ppm(img_file)
 
 
